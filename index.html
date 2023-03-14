@@ -7,40 +7,103 @@
     <meta name="description" content="interactive card details form ">
     <meta name="robots" content="index,follow">
     <link rel="icon" href="./images/favicon-32x32.png"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css"/>
     <title>Interactive-Card-Details-Form</title>
 </head>
 <body>
-    <main>
+
         <section class="card-section">
-            <img src="./images/bg-card-front.png" alt="" class="card-front"/>
-            <img src="./images/bg-card-back.png" alt="" class="back-card"/>
+            <div class="inner-card-container">
+                <div class="front-card-container">
+                    <img src="images/bg-card-front.png" alt="" class="front-card-image" />
+                    <div class="front-card-div">
+                        <div class="circles-div">
+                            <span class="solid-circle"></span>
+                            <span class="hollow-circle"></span>
+                        </div>
+                        
+                        <h2>0000 0000 0000 0000</h2>
+                        <div class="name-exp-date-div">
+                            <h3>JANE APPLESEED</h3>
+                            <h3>00/00</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="back-card-div">
+                    <img src="./images/bg-card-back.png" alt="" class="back-card-image"/>
+                    <div class="cvc-div">
+                        <h3>000</h3>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="form-container-section">
             <form>
-                <label for="card-name">CARDHOLDER NAME</label>
-                <input type="text" id="card-name" name="card-name" placeholder="e.g.Jane Appleseed" required/>
-
-                <label>CARD NUMBER</label>
-                <input type="number" id="card-number"
-                name="card-number"
-                placeholder="e.g. 1234 5678 9123 0000" required/>
+                <div class="cardholder-name-div form-item">
+                    <label for="card-name">CARDHOLDER NAME</label>
+                    <input type="text" id="card-name" name="card-name" placeholder="e.g.Jane Appleseed" required/>
+                </div>
+                
+                <div class="card-number-div form-item">
+                    <label>CARD NUMBER</label>
+                    <input 
+                    type="text" 
+                    id="card-number"
+                    pattern="[0-9]*"
+                    name="card-number"
+                    inputmode="numeric"
+                    placeholder="e.g 1234 5678 9123 0000" 
+                    required
+                    />
+                </div>
 
                 <div class="date-container">
                     <div class="exp-date-container">
-                        <label>EXP. DATE(MM/YY)</label>
-                        <input type="date" id="exp-date"
-                        name="exp-date"
-                        placeholder="MM"required/>
+                        <h3>EXP. DATE(MM/YY)</h3>
+                        <div class="exp-wrapper">
+                            <input 
+                            autocomplete="off" 
+                            class="exp" 
+                            id="month" 
+                            maxlength="2" 
+                            pattern="[0-9]*" 
+                            inputmode="numerical" 
+                            placeholder="MM" 
+                            type="text" 
+                            data-pattern-validate 
+                            />
+
+                            <input 
+                            autocomplete="off" 
+                            class="exp" 
+                            id="year" 
+                            maxlength="2" 
+                            pattern="[0-9]*" 
+                            inputmode="numerical" 
+                            placeholder="YY" 
+                            type="text" 
+                            data-pattern-validate 
+                            />
+                        </div>
                     </div>
                     
                     <div class="cvc-container">
-                        <label>CVC</label>
-                        <input type="number" 
-                        id="cvc-number"
-                        name="cvc-number"
-                        placeholder="e.g 123"
+                        <h3>CVC</h3>
+                        <input 
+                        autocomplete="off" 
+                        class="exp" 
+                        id="cvc" 
+                        maxlength="3" 
+                        pattern="[0-9]*" 
+                        inputmode="numerical" 
+                        placeholder="e.g 123" 
+                        type="text" 
+                        data-pattern-validate 
                         />
                     </div>
                 </div>
@@ -48,7 +111,6 @@
                 <button type="submit">Confirm</button>
             </form>
         </section>
-    </main>
 
     <script src="app.js"></script>
 </body>
