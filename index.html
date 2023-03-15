@@ -47,6 +47,7 @@
                 <div class="cardholder-name-div form-item">
                     <label for="card-name">CARDHOLDER NAME</label>
                     <input type="text" id="card-name" name="card-name" placeholder="e.g.Jane Appleseed" required/>
+                    <p class="error-message name-error">Can't be empty</p>
                 </div>
                 
                 <div class="card-number-div form-item">
@@ -60,35 +61,42 @@
                     placeholder="e.g 1234 5678 9123 0000" 
                     required
                     />
+                    <p class="error-message card-number-error"> Can't be empty <span class="wrong-format-error">Wrong format, Numbers Only</span></p>
                 </div>
 
                 <div class="date-container">
                     <div class="exp-date-container">
                         <h3>EXP. DATE(MM/YY)</h3>
                         <div class="exp-wrapper">
-                            <input 
-                            autocomplete="off" 
-                            class="exp" 
-                            id="month" 
-                            maxlength="2" 
-                            pattern="[0-9]*" 
-                            inputmode="numerical" 
-                            placeholder="MM" 
-                            type="text" 
-                            data-pattern-validate 
-                            />
-
-                            <input 
-                            autocomplete="off" 
-                            class="exp" 
-                            id="year" 
-                            maxlength="2" 
-                            pattern="[0-9]*" 
-                            inputmode="numerical" 
-                            placeholder="YY" 
-                            type="text" 
-                            data-pattern-validate 
-                            />
+                            <div class="month-input-container">
+                                <input 
+                                autocomplete="off" 
+                                class="exp" 
+                                id="month" 
+                                maxlength="2" 
+                                pattern="[0-9]*" 
+                                inputmode="numerical" 
+                                placeholder="MM" 
+                                type="text" 
+                                data-pattern-validate 
+                                />
+                                <p class="error-message month-input error">Can't be empty</p>
+                            </div>
+                            
+                            <div class="year-input-container">
+                                <input 
+                                autocomplete="off" 
+                                class="exp" 
+                                id="year" 
+                                maxlength="2" 
+                                pattern="[0-9]*" 
+                                inputmode="numerical" 
+                                placeholder="YY" 
+                                type="text" 
+                                data-pattern-validate 
+                                />
+                                <p class="error-message year-input error">Can't be empty</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -105,11 +113,19 @@
                         type="text" 
                         data-pattern-validate 
                         />
+                        <p class="error-message cvc-input error">Can't be empty</p>
                     </div>
                 </div>
                 
                 <button type="submit">Confirm</button>
             </form>
+
+            <div class="completed-state">
+                <img src="./images/icon-complete.svg" alt=""/>
+                <h3>THANK YOU</h3>
+                <p>We've added your card details</p>
+                <button>Continue</button>
+            </div>
         </section>
 
     <script src="app.js"></script>
