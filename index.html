@@ -25,10 +25,10 @@
                             <span class="hollow-circle"></span>
                         </div>
                         
-                        <h2>0000 0000 0000 0000</h2>
+                        <h2 class="card-number">0000 0000 0000 0000</h2>
                         <div class="name-exp-date-div">
-                            <h3>JANE APPLESEED</h3>
-                            <h3>00/00</h3>
+                            <h3 class="card-name">JANE APPLESEED</h3>
+                            <h3 class="card-expiry-date"><span class="expiry-month">00</span>/<span class="expiry-year">00</span></h3>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="back-card-div">
                     <img src="./images/bg-card-back.png" alt="" class="back-card-image"/>
                     <div class="cvc-div">
-                        <h3>000</h3>
+                        <h3 class="cvc-number">000</h3>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
             <form>
                 <div class="cardholder-name-div form-item">
                     <label for="card-name">CARDHOLDER NAME</label>
-                    <input type="text" id="card-name" name="card-name" placeholder="e.g.Jane Appleseed" required/>
+                    <input type="text" id="card-name-input" name="card-name" placeholder="e.g.Jane Appleseed" required/>
                     <p class="error-message name-error">Can't be empty</p>
                 </div>
                 
@@ -61,7 +61,7 @@
                     placeholder="e.g 1234 5678 9123 0000" 
                     required
                     />
-                    <p class="error-message card-number-error"> Can't be empty <span class="wrong-format-error">Wrong format, Numbers Only</span></p>
+                    <p class="error-message card-number-error"> <span class="empty-input-error">Can't be empty</span> <span class="wrong-format-error">Wrong format, Numbers Only</span></p>
                 </div>
 
                 <div class="date-container">
@@ -80,7 +80,7 @@
                                 type="text" 
                                 data-pattern-validate 
                                 />
-                                <p class="error-message month-input error">Can't be empty</p>
+                                <p class="error-message month-input-error">Can't be empty</p>
                             </div>
                             
                             <div class="year-input-container">
@@ -95,7 +95,7 @@
                                 type="text" 
                                 data-pattern-validate 
                                 />
-                                <p class="error-message year-input error">Can't be empty</p>
+                                <p class="error-message year-input-error">Can't be empty</p>
                             </div>
                         </div>
                     </div>
@@ -113,11 +113,11 @@
                         type="text" 
                         data-pattern-validate 
                         />
-                        <p class="error-message cvc-input error">Can't be empty</p>
+                        <p class="error-message cvc-input-error">Can't be empty</p>
                     </div>
                 </div>
                 
-                <button type="submit">Confirm</button>
+                <button type="submit" class="submit-button">Confirm</button>
             </form>
 
             <div class="completed-state">
