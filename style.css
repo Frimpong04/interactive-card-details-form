@@ -253,7 +253,13 @@ button:hover {
     width: 100%;
 }
 /* error message styles */
-.error-message {
+.error-message,
+.name-error,
+.empty-input-error,
+.wrong-format-error,
+.month-input-error,
+.year-input-error,
+.cvc-input-error{
     color: var(--red-input-errors);
     visibility: hidden;
 }
