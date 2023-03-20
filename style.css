@@ -259,7 +259,7 @@ button:hover {
 .wrong-format-error,
 .month-input-error,
 .year-input-error,
-.cvc-input-error{
+.cvc-input-error {
     color: var(--red-input-errors);
     visibility: hidden;
 }
@@ -334,13 +334,16 @@ button:hover {
         height: 2rem;
     }
 
-    form {
+    form, 
+    .completed-state {
         width: 85%;
     }
 
     .cvc-container  input {
         width: 100%;
     }
+
+
     button {
         font-size:1.8rem;
         padding: 2rem;
@@ -349,5 +352,12 @@ button:hover {
 }
 
 @media only screen and (max-width: 320px) {
+    form {
+        width: 90%; 
+    }
+
+    .completed-state {
+        width: 90%;
+    }
 
 }

@@ -1,6 +1,7 @@
+
 // selectors
 // form selector
-const formElement = document.getElementsByTagName("form");
+const formElement = document.querySelector("form");
 
 // thank you selector
 const completedState = document.querySelector(".completed-state");
@@ -23,6 +24,8 @@ const wrongFormatError = document.querySelector(".wrong-format-error");
 const cvcInput = document.getElementById("cvc");
 const cvcInputError = document.querySelector(".cvc-input-error");
 const cardNumberError = document.querySelector(".card-number-error");
+
+
 // date input selectors
 const expiryMonthInput = document.getElementById("month");
 const expiryYearInput = document.getElementById("year");
@@ -32,17 +35,17 @@ const expiryYearInputError = document.querySelector(".year-input-error");
 // button selectors
 const submitButton = document.querySelector(".submit-button");
 
-const validRegex = /(^ 4[0 - 9]{ 12}(?: [0 - 9]{ 3 })?$)| (^ (?: 5[1 - 5][0 - 9]{ 2 }| 222[1 - 9] | 22[3 - 9][0 - 9] | 2[3 - 6][0 - 9]{ 2 }| 27[01][0 - 9] | 2720)[0 - 9]{ 12 }$)| (3[47][0 - 9]{ 13 })| (^ 3(?: 0[0 - 5] | [68][0 - 9])[0 - 9]{ 11 }$)| (^ 6(?: 011 | 5[0 - 9]{ 2})[0 - 9]{ 12 }$)| (^ (?: 2131 | 1800 | 35\d{ 3 }) \d{ 11 }$)/;
 
-// const validRegex = /^5[1-5][0-9]{14}|^(222[1-9]|22[3-9]\\d|2[3-6]\\d{2}|27[0-1]\\d|2720)[0-9]{12}$/;
+// const validRegex = /^4{1}[0-9]{3}[\s]?[0-9]{4}[\s]?[0-9]{4}[\s]?[0-9]{4}$/;
+const validRegex = /[0-9]{4}[\s]?[0-9]{4}[\s]?[0-9]{4}[\s]?[0-9]{4}$/;
 
 
 // functions
-
-function  validInputs(){
-    if (cardNameInput.value && cardNumberInput.value && expiryMonthInput.value && expiryYearInput.value && validRegex.test(cardNumberInput.value)) {
+function cardNumberValidator() {
+    console.log(cardNumberInput.value);
+    if(validRegex.test(cardNumberInput.value)) {
         return true;
-    };
+    }
     return false;
 }
 
@@ -51,11 +54,21 @@ function formSubmit(e) {
     console.log("clicked");
     let nameInput = cardNameInput.value;
     let numberInput = cardNumberInput.value;
-    let expiryMonthValue = expiryMonthInput.value;
-    let expiryYearValue = expiryYearInput.value;
-    let cvc = cvcInput.value;
+    let expiryMonthValue = Number(expiryMonthInput.value);
+    let expiryYearValue = Number(expiryYearInput.value);
+    let cvc = Number(cvcInput.value);
 
-    if (!nameInput){ 
+    function validInputs() {
+        if (cardNameInput.value && cardNumberInput.value && expiryMonthInput.value && expiryYearInput.value && validRegex.test(cardNumberInput.value) && typeof (expiryMonthValue) === "number" && typeof (expiryYearValue) === "number" && typeof (cvc) === "number") {
+            return true;
+        };
+        return false;
+    }
+    // validated card number
+    let validatedCardNumber = cardNumberValidator();
+    console.log(validatedCardNumber);
+
+    if (!nameInput) {
         cardNameInput.style.border = "thin solid red";
         nameInputError.style.visibility = "visible";
         nameInput = cardName.innerText;
@@ -67,30 +80,36 @@ function formSubmit(e) {
         // wrongFormatError.style.visibility = "hidden";
         numberInput = cardNumber.innerText;
     }
-    if(!validRegex.test(numberInput)) {
+    if (!validatedCardNumber) {
         cardNumberInput.style.border = "thin solid red";
         wrongFormatError.style.visibility = "visible";
-        // cardEmptyInputError.style.visibility = "hidden";
-        numberInput = cardNumber.innerText; 
+        cardEmptyInputError.style.visibility = "visible";
+
+        numberInput = cardNumber.innerText;
     }
+
     if (!expiryMonthValue) {
         expiryMonthInput.style.border = "thin solid red";
         expiryMonthInputError.style.visibility = "visible";
         expiryMonthValue = expiryMonth.innerText;
     }
 
-    if (!expiryYearValue){ 
+
+    if (!expiryYearValue) {
         expiryYearInput.style.border = "thin solid red";
         expiryYearInputError.style.visibility = "visible";
         expiryYearValue = expiryYear.innerText;
     }
 
+
     if (!cvc) {
         cvcInput.style.border = "thin solid red";
         cvcInputError.style.visibility = "visible";
+        // cvcInputError.innerText = "Can't be empty";
         cvc = cvcNumber.innerText;
 
     }
+
 
 
     cardName.innerText = nameInput;
@@ -105,10 +124,9 @@ function formSubmit(e) {
         completedState.style.display = "block";
     }
 
-    console.log(nameInput, numberInput, expiryMonthValue, expiryYearValue, cvc);
+    console.log(nameInput, numberInput, expiryMonthValue, expiryYearValue, cvc)
 
 }
-
 function clearErrors(event) {
     
     event.target.style.border = "none";
